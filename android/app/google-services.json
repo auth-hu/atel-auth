@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "581066014283",
+    "project_id": "auth-atel",
+    "storage_bucket": "auth-atel.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581066014283:android:af549dcd8b1e29a40757ce",
+        "android_client_info": {
+          "package_name": "com.auth.atel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK65k3isryAKQFm7BagRRjAQEb_Sqc0fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
