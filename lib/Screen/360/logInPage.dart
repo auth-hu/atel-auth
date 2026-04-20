@@ -1,8 +1,13 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
 
+import 'package:atel/Screen/360/singUpPage.dart';
 import 'package:atel/componnent/360/Emailfield.dart';
 import 'package:atel/componnent/360/GisterClick.dart';
+import 'package:atel/componnent/360/condtion.dart';
+import 'package:atel/componnent/360/forgotPass.dart';
+import 'package:atel/componnent/360/moreLogin.dart';
 import 'package:atel/componnent/360/passwordfield.dart';
+import 'package:atel/componnent/360/terms.dart';
 import 'package:atel/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +39,15 @@ class _logInPage extends State<logInPage> {
   bool isTrue = true;
   late var darkThemBackground = darkThem == true ? Color(0xff030b26) : Color(0xff89fafa);
   late var darkThemdisablebutton = darkThem == true ? Color.fromARGB(157, 3, 11, 38) : Color.fromARGB(162, 121, 254, 250);
-  late var darkThemFontColor = darkThem == true ? Color(0xffffffff) : Color(0xff000000);
-  late var darkThemFalseFontColor = darkThem == false ? Color(0xffffffff) : Color(0xff000000);
+  late var darkThemFontColor = darkThem == true ? Color(0xfff2f2f2) : Color(0xff333333);
+  late var darkThemFalseFontColor = darkThem == false ? Color(0xfff2f2f2) : Color(0xff333333);
   late var darkThemSecBacgrounColor = darkThem == false ? Color(0xfff2f2f2) : Color(0xff333333);
   late var darkThemborder = darkThem == true ? Color(0xfff2f2f2) : Color(0xff333333);
+  late var darkFalseThemborder = darkThem == false ? Color(0xfff2f2f2) : Color(0xff333333);
   late var darkThemerrorborder = darkThem == false ? Colors.red : Colors.redAccent;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController forgotPasswordController = TextEditingController();
   GlobalKey<FormState> LoginState = GlobalKey();
   bool chval = false;
 
@@ -126,16 +133,15 @@ class _logInPage extends State<logInPage> {
                           ),
                           SizedBox(height: 2,),
 
-                          Container(
-                            margin: EdgeInsets.only(top: 6),
-                            child: gisterClick(
-                              darkThemFontColor: darkThemFontColor,
-                              isUnderline: true,
-                              text: "هل نسيت كلمة المرور؟",
-                              onTap: (){
-
-                              }
-                              ),
+                          forgotPas(
+                            darkThemFontColor: darkThemFontColor,
+                            heightPage: heightPage,
+                            widthPage: widthPage,
+                            darkThemFalseFontColor: darkThemFalseFontColor,
+                            controller: forgotPasswordController,
+                            darkThemborder: darkFalseThemborder,
+                            darkThemerrorborder: darkThemerrorborder,
+                            hint: ":البريد الألكتروني",
                           ),
 
                           Container(
@@ -145,13 +151,12 @@ class _logInPage extends State<logInPage> {
                               children: [
                                 
 
-                              gisterClick(
+                            Condtion(
                               darkThemFontColor: darkThemFontColor,
-                              isUnderline: true,
-                              text: "شروط الأستخدام",
-                              onTap: (){
-
-                              }
+                              heightPage: heightPage,
+                              widthPage: widthPage,
+                              darkThemFalseFontColor:
+                              darkThemFalseFontColor
                               ),
 
                             gisterClick(
@@ -163,13 +168,11 @@ class _logInPage extends State<logInPage> {
                               }
                               ),
 
-                            gisterClick(
+                            terms(
                               darkThemFontColor: darkThemFontColor,
-                              isUnderline: true,
-                              text: "الأتفاقيات",
-                              onTap: (){
-
-                              }
+                              heightPage: heightPage,
+                              widthPage: widthPage,
+                              darkThemFalseFontColor: darkThemFalseFontColor,
                               ),
 
                             gisterClick(
@@ -238,37 +241,14 @@ class _logInPage extends State<logInPage> {
                           ),
                          ),
 
-                         Container(
-                          margin: EdgeInsets.only(top: 12),
-                          width: widthPage * 0.65,
-                          height: 50,
-                          child: MaterialButton(onPressed: (){
-
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
-                            side: BorderSide(
-                              width: 1.2,
-                              color: darkThemFalseFontColor
-                            )
+                         moreLogin(
+                          widthPage: widthPage,
+                          darkThemFalseFontColor:
+                          darkThemFalseFontColor,
+                          darkThemFontColor: darkThemFontColor,
+                          darkThemdisablebutton: darkThemdisablebutton,
+                          heightPage: heightPage,
                           ),
-                          color: darkThemFontColor,
-                          disabledColor: darkThemdisablebutton,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("تسجيل الدخول بطريقة أخرى",
-                              style: GoogleFonts.rubik(
-                                    color: darkThemFalseFontColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: widthPage * .04
-                                  ),
-                              ),
-                            ],
-                          ),
-                          ),
-                         ),
 
                          Center(
                            child: Container(
@@ -282,7 +262,12 @@ class _logInPage extends State<logInPage> {
                                 isUnderline: true,
                                 text: "انشئ حسابك الخاص",
                                 onTap: (){
-                           
+                                  Navigator.push(
+                                    context, 
+                                    MaterialPageRoute(
+                                      builder: (context) => singUpPage(),
+                                      )
+                                    );
                                 }
                                 ),
                                 gisterClick(
@@ -290,7 +275,7 @@ class _logInPage extends State<logInPage> {
                                 isUnderline: false,
                                 text: " هل لديك حساب؟",
                                 onTap: (){
-                           
+                                  
                                 }
                                 ),
                               ],
