@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, strict_top_level_inference, empty_constructor_bodies
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, strict_top_level_inference, empty_constructor_bodies
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Emailfield extends StatelessWidget {
+class usernameField extends StatelessWidget {
 
   final fieldTitle;
   final darkThemFontColor;
@@ -15,7 +15,7 @@ class Emailfield extends StatelessWidget {
   final bool isTrue;
   final Function(String)? onChanged;
 
-  const Emailfield(
+  const usernameField(
   {
     super.key,
     required this.fieldTitle,
@@ -101,10 +101,7 @@ class Emailfield extends StatelessWidget {
             ),
 
             validator: (value) {
-              final usernameval = RegExp(r'^[\u0600-\u06ff\s]+$');
-                if(usernameval.hasMatch(value!)){
-                  return "هذا الحقل لا يجب ان يحتوي الحروف العربية";
-                }if(value.isEmpty){
+              if(value!.isEmpty){
                   return "هذا الحقل مطلوب";
                 }
               return null;

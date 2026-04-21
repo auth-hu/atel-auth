@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Emailfield extends StatelessWidget {
+class Emailfield600 extends StatelessWidget {
 
   final fieldTitle;
   final darkThemFontColor;
@@ -15,7 +15,7 @@ class Emailfield extends StatelessWidget {
   final bool isTrue;
   final Function(String)? onChanged;
 
-  const Emailfield(
+  const Emailfield600(
   {
     super.key,
     required this.fieldTitle,
@@ -35,8 +35,8 @@ class Emailfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        right: 12,
-        left: 12,
+        right: 24,
+        left: 24,
         bottom: 8,
         top: 8
       ),
@@ -48,7 +48,7 @@ class Emailfield extends StatelessWidget {
             child: Text("$fieldTitle",
             style: GoogleFonts.rubik(
               color: darkThemFontColor,
-              fontSize: widthPage * 0.03,
+              fontSize: widthPage * 0.02,
               fontWeight: FontWeight.w500,
             ),
             ),

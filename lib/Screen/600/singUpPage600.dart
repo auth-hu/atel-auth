@@ -1,13 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
 
-
-import 'package:atel/Screen/360/logInPage.dart';
-import 'package:atel/componnent/360/Emailfield.dart';
-import 'package:atel/componnent/360/GisterClick.dart';
-import 'package:atel/componnent/360/condtion.dart';
-import 'package:atel/componnent/360/passwordfield.dart';
-import 'package:atel/componnent/360/terms.dart';
-import 'package:atel/componnent/360/usernameFeild.dart';
+import 'package:atel/Screen/600/logInPage600.dart';
+import 'package:atel/componnent/600/Emailfield.dart';
+import 'package:atel/componnent/600/GisterClick.dart';
+import 'package:atel/componnent/600/condtion.dart';
+import 'package:atel/componnent/600/passwordfield.dart';
+import 'package:atel/componnent/600/terms.dart';
+import 'package:atel/componnent/600/usernameFeild.dart';
 import 'package:atel/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,20 +19,20 @@ void main() async{
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(const singUpPage());
+  runApp(const singUpPage600());
 }
 
-class singUpPage extends StatefulWidget{
-  const singUpPage({super.key});
+class singUpPage600 extends StatefulWidget{
+  const singUpPage600({super.key});
 
 
   @override
-  State<singUpPage> createState() => _singUpPage();
+  State<singUpPage600> createState() => _singUpPage600();
 }
 
 
 
-class _singUpPage extends State<singUpPage> {
+class _singUpPage600 extends State<singUpPage600> {
 
 
 
@@ -137,7 +136,7 @@ bool canSubmit() {
               Navigator.pushReplacement(
                 context, 
                 MaterialPageRoute(
-                  builder: (context) => logInPage(),
+                  builder: (context) => logInPage600(),
                 )
               );
             }, 
@@ -156,12 +155,11 @@ bool canSubmit() {
           style: GoogleFonts.rubik(
             color: darkThemFontColor,
             fontWeight: FontWeight.w500,
-            fontSize: widthPage * .06
+            fontSize: widthPage * .04
           ),
         ),
       ),
 
-      /// ✅ الحل هنا
       Expanded(
         child: SingleChildScrollView(
           child: Column(
@@ -180,10 +178,9 @@ bool canSubmit() {
                 child: Column(
                   children: [
 
-                    /// اختيار النوع (مع الأيقونات)
                     Container(
                       margin: EdgeInsets.only(top: 24),
-                      width: widthPage * .8,
+                      width: widthPage * .5,
                       height: 75,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -219,13 +216,14 @@ bool canSubmit() {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(Icons.work,
-                                        size: 32,
+                                        size: 24,
                                         color: darkThemFontColor),
                                     Text(
                                       "صاحب عمل",
                                       style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .03
+                                        fontSize: widthPage * .02,
+                                        fontWeight: FontWeight.w500
                                       ),
                                     )
                                   ],
@@ -250,13 +248,14 @@ bool canSubmit() {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(Icons.person,
-                                        size: 32,
+                                        size: 24,
                                         color: darkThemFontColor),
                                     Text(
                                       "عامل",
                                       style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .03
+                                        fontSize: widthPage * .02,
+                                        fontWeight: FontWeight.w500
                                       ),
                                     )
                                   ],
@@ -268,13 +267,12 @@ bool canSubmit() {
                       ),
                     ),
 
-                    /// الفورم (كما هو مع الكومبوننت)
                     Form(
                       key: singUpState,
                       child: Column(
                         children: [
 
-                          usernameField(
+                          usernameField600(
                             fieldTitle: "أسم المستخدم",
                             darkThemFontColor: darkThemFontColor,
                             widthPage: widthPage,
@@ -288,7 +286,7 @@ bool canSubmit() {
                             },
                           ),
 
-                          Emailfield(
+                          Emailfield600(
                             controller: emailController,
                             hint: "ضع البريد الألكتروني",
                             fieldTitle: ":البريد الألكتروني",
@@ -302,7 +300,7 @@ bool canSubmit() {
                             },
                           ), 
 
-                          Passwordfield(
+                          Passwordfield600(
                             controller: confpasswordController,
                             hint: "ضع كلمة مرورك",
                             fieldTitle: ":كلمة المرور",
@@ -322,7 +320,7 @@ bool canSubmit() {
                             },
                           ),
 
-                          Passwordfield(
+                          Passwordfield600(
                             controller: passwordController,
                             hint: "أكد كلمة المرور التي وضعتها",
                             fieldTitle: ":تأكيد كلمة المرور",
@@ -359,14 +357,14 @@ bool canSubmit() {
                             ),
                             textStyle: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .03,
+                                        fontSize: widthPage * .02,
                                         fontWeight: FontWeight.w500
                                       ),
-                            width: widthPage * .7,
+                            width: widthPage * .5,
                             label: Text("اختر المحافظة",
                             style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .03,
+                                        fontSize: widthPage * .02,
                                         fontWeight: FontWeight.w500
                                       ),
                             ),
@@ -388,7 +386,7 @@ bool canSubmit() {
                               children: [
                                 
 
-                            Condtion(
+                            Condtion600(
                               darkThemFontColor: darkThemFontColor,
                               heightPage: heightPage,
                               widthPage: widthPage,
@@ -396,7 +394,7 @@ bool canSubmit() {
                               darkThemFalseFontColor
                               ),
 
-                            gisterClick(
+                            gisterClick600(
                               darkThemFontColor: darkThemFontColor,
                               isUnderline: false,
                               text: " و ",
@@ -405,14 +403,14 @@ bool canSubmit() {
                               }
                               ),
 
-                            terms(
+                            terms600(
                               darkThemFontColor: darkThemFontColor,
                               heightPage: heightPage,
                               widthPage: widthPage,
                               darkThemFalseFontColor: darkThemFalseFontColor,
                               ),
 
-                            gisterClick(
+                            gisterClick600(
                               darkThemFontColor: darkThemFontColor,
                               isUnderline: false,
                               text: " هل انت توافق على",
@@ -446,7 +444,7 @@ bool canSubmit() {
                     /// زر
                     Container(
                           margin: EdgeInsets.only(top: 12, bottom: 12),
-                          width: widthPage * 0.65,
+                          width: widthPage * 0.5,
                           height: 50,
                           child: MaterialButton(onPressed: () async {
                             if (singUpState.currentState!.validate()) {
@@ -545,11 +543,11 @@ bool canSubmit() {
                               Icon(Icons.login_rounded,
                               color: darkThemFontColor,
                               ),
-                              Text("تسجيل الدخول",
+                              Text("أنشاء حساب جديد",
                               style: GoogleFonts.rubik(
                                     color: darkThemFontColor,
                                     fontWeight: FontWeight.w500,
-                                    fontSize: widthPage * .04
+                                    fontSize: widthPage * .032
                                   ),
                               ),
                             ],

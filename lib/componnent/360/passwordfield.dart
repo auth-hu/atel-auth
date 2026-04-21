@@ -15,6 +15,7 @@ class Passwordfield extends StatelessWidget {
   final bool isTrue;
   final bool showIcon;
   final VoidCallback? onPressed;
+  final Function(String)? onChanged;
 
   const Passwordfield(
   {
@@ -29,6 +30,7 @@ class Passwordfield extends StatelessWidget {
     required this.showIcon,
     required this.hint,
     required this.onPressed,
+    this.onChanged
   }
   );
 
@@ -38,7 +40,9 @@ class Passwordfield extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
         right: 12,
-        left: 12
+        left: 12,
+        bottom: 8,
+        top: 8
       ),
       child: Column(
         children: [
@@ -55,6 +59,9 @@ class Passwordfield extends StatelessWidget {
           ),
           TextFormField(
             controller: controller,
+            onChanged: (value) {
+                    onChanged?.call(value); // مهم
+                  },
             autovalidateMode: AutovalidateMode.onUserInteraction,
             obscureText: isTrue,
             maxLines: 1,

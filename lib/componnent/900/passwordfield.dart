@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Emailfield extends StatelessWidget {
+class Passwordfield900 extends StatelessWidget {
 
   final fieldTitle;
   final darkThemFontColor;
@@ -13,9 +13,11 @@ class Emailfield extends StatelessWidget {
   final controller;
   final hint;
   final bool isTrue;
+  final bool showIcon;
+  final VoidCallback? onPressed;
   final Function(String)? onChanged;
 
-  const Emailfield(
+  const Passwordfield900(
   {
     super.key,
     required this.fieldTitle,
@@ -25,8 +27,10 @@ class Emailfield extends StatelessWidget {
     required this.darkThemborder,
     required this.darkThemerrorborder,
     required this.controller,
+    required this.showIcon,
     required this.hint,
-    this.onChanged,
+    required this.onPressed,
+    this.onChanged
   }
   );
 
@@ -35,10 +39,10 @@ class Emailfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        right: 12,
-        left: 12,
-        bottom: 8,
-        top: 8
+        right: 128,
+        left: 128,
+        bottom: 10,
+        top: 10
       ),
       child: Column(
         children: [
@@ -48,7 +52,7 @@ class Emailfield extends StatelessWidget {
             child: Text("$fieldTitle",
             style: GoogleFonts.rubik(
               color: darkThemFontColor,
-              fontSize: widthPage * 0.03,
+              fontSize: widthPage * 0.015,
               fontWeight: FontWeight.w500,
             ),
             ),
@@ -63,6 +67,14 @@ class Emailfield extends StatelessWidget {
             maxLines: 1,
             textAlign: TextAlign.right,
             decoration: InputDecoration(
+              prefixIcon: showIcon == true ? 
+              IconButton(onPressed: onPressed, icon: Icon(
+                isTrue == true ? Icons.visibility : Icons.visibility_off,
+                color: darkThemFontColor,
+              )
+              )
+              : null 
+              ,
               hint: Text("$hint",
               textAlign: TextAlign.right,
               style: GoogleFonts.rubik(
@@ -106,6 +118,10 @@ class Emailfield extends StatelessWidget {
                   return "هذا الحقل لا يجب ان يحتوي الحروف العربية";
                 }if(value.isEmpty){
                   return "هذا الحقل مطلوب";
+                }if(value.isEmpty){
+                  return "هذا الحقل مطلوب";
+                }if(value.length < 8){
+                  return "هذا الحقل يجب ان يحتوي على 8 حروف أو ارقام";
                 }
               return null;
             },
