@@ -119,7 +119,8 @@ bool canSubmit() {
         double heightPage = constraints.maxHeight;
         return Scaffold(
           backgroundColor: darkThemBackground,
-          body: Center(
+          body: SafeArea(
+            child: Center(
   child: Column(
     children: [
       Container(
@@ -566,6 +567,7 @@ bool canSubmit() {
     ],
   ),
 ),
+            )
         ); 
       }),
     );

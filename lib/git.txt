@@ -1,3 +1,6 @@
 git add .
 git commit -m "update"
 git push
+
+ SHA1: 38:57:2A:49:D3:8A:90:BB:E3:2A:1A:94:81:42:93:51:F6:AA:BC:83
+         SHA256: BF:82:5A:56:02:D1:0C:AE:E7:BA:D5:AE:C3:DE:D4:31:59:DA:C1:D1:A6:64:91:D4:D2:C3:64:B8:3F:DE:3C:FD

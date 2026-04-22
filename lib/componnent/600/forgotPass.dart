@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, strict_top_level_inference
 
-import 'package:atel/componnent/360/GisterClick.dart';
 import 'package:atel/componnent/600/GisterClick.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

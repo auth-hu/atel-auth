@@ -60,7 +60,8 @@ class _logInPage600 extends State<logInPage600> {
         double heightPage = constraints.maxHeight;
         return Scaffold(
           backgroundColor: darkThemBackground,
-          body: Center(
+          body: SafeArea(
+            child: Center(
             child: Column(
               children: [
                 Container(
@@ -289,6 +290,7 @@ class _logInPage600 extends State<logInPage600> {
               ],
             ),
           ),
+            )
         ); 
       }),
     );

@@ -1,15 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
 
 import 'package:atel/Screen/360/singUpPage.dart';
-import 'package:atel/componnent/360/Emailfield.dart';
 import 'package:atel/componnent/360/GisterClick.dart';
-import 'package:atel/componnent/360/condtion.dart';
-import 'package:atel/componnent/360/forgotPass.dart';
-import 'package:atel/componnent/360/moreLogin.dart';
-import 'package:atel/componnent/360/passwordfield.dart';
-import 'package:atel/componnent/360/terms.dart';
 import 'package:atel/componnent/600/GisterClick.dart';
-import 'package:atel/componnent/600/condtion.dart';
 import 'package:atel/componnent/900/Emailfield.dart';
 import 'package:atel/componnent/900/condtion.dart';
 import 'package:atel/componnent/900/forgotPass.dart';
@@ -68,7 +61,8 @@ class _logInPage900 extends State<logInPage900> {
         double heightPage = constraints.maxHeight;
         return Scaffold(
           backgroundColor: darkThemBackground,
-          body: Center(
+          body: SafeArea(
+            child: Center(
             child: Column(
               children: [
                 Container(
@@ -297,6 +291,7 @@ class _logInPage900 extends State<logInPage900> {
               ],
             ),
           ),
+          )
         ); 
       }),
     );
