@@ -120,451 +120,495 @@ bool canSubmit() {
           backgroundColor: darkThemBackground,
           body: SafeArea(
             child: Center(
-  child: Column(
-    children: [
-      Container(
-        alignment: Alignment.topLeft,
-        margin: EdgeInsets.all(12),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: darkThemFontColor,
-              width: 1.3
-            )
-          ),
-          child: IconButton(
-            onPressed: (){
-              Navigator.pushReplacement(
-                context, 
-                MaterialPageRoute(
-                  builder: (context) => logInPage600(),
-                )
-              );
-            }, 
-            icon: Icon(
-              Icons.arrow_back,
-              color: darkThemFontColor,
-            )
-          ),
-        )
-      ),
-
-      Container(
-        margin: EdgeInsets.only(top: heightPage * .03),
-        child: Text(
-          "انشئ حسابكَ بكل سهولة",
-          style: GoogleFonts.rubik(
-            color: darkThemFontColor,
-            fontWeight: FontWeight.w500,
-            fontSize: widthPage * .04
-          ),
-        ),
-      ),
-
-      Expanded(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-
-              Container(
-                width: widthPage,
-                margin: EdgeInsets.only(top: 16, right: 12, left: 12),
-                decoration: BoxDecoration(
-                  color: darkThemSecBacgrounColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  )
-                ),
                 child: Column(
                   children: [
-
                     Container(
-                      margin: EdgeInsets.only(top: 24),
-                      width: widthPage * .5,
-                      height: 75,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: darkThemFontColor,
-                          width: 1.3
-                        )
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: isSelected == true 
-                                    ? darkThemBackground 
-                                    : darkThemSecBacgrounColor,
-                                border: Border(
-                                  right: BorderSide(
-                                    color: darkThemFontColor,
-                                    width: 1.3
-                                  )
-                                )
-                              ),
-                              child: MaterialButton(
-                                onPressed: (){
-                                  setState(() {
-                                    isSelected = true;
-                                    isSelected2 = false;
-                                  });
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.work,
-                                        size: 24,
-                                        color: darkThemFontColor),
-                                    Text(
-                                      "صاحب عمل",
-                                      style: GoogleFonts.rubik(
-                                        color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
-                                        fontWeight: FontWeight.w500
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ),
-
-                          Expanded(
-                            child: Container(
-                              color: isSelected2 == true 
-                                  ? darkThemBackground 
-                                  : darkThemSecBacgrounColor,
-                              child: MaterialButton(
-                                onPressed: (){
-                                  setState(() {
-                                    isSelected2 = true;
-                                    isSelected = false;
-                                  });
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.person,
-                                        size: 24,
-                                        color: darkThemFontColor),
-                                    Text(
-                                      "عامل",
-                                      style: GoogleFonts.rubik(
-                                        color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
-                                        fontWeight: FontWeight.w500
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Form(
-                      key: singUpState,
-                      child: Column(
-                        children: [
-
-                          usernameField600(
-                            fieldTitle: "أسم المستخدم",
-                            darkThemFontColor: darkThemFontColor,
-                            widthPage: widthPage,
-                            isTrue: false,
-                            darkThemborder: darkThemborder,
-                            darkThemerrorborder: darkThemerrorborder,
-                            controller: usernameController,
-                            hint: "أكتب اسمك هنا",
-                            onChanged: (val) {
-                              setState(() {});
-                            },
-                          ),
-
-                          Emailfield600(
-                            controller: emailController,
-                            hint: "ضع البريد الألكتروني",
-                            fieldTitle: ":البريد الألكتروني",
-                            darkThemFontColor: darkThemFontColor,
-                            widthPage: widthPage,
-                            isTrue: false,
-                            darkThemborder: darkThemborder,
-                            darkThemerrorborder: darkThemerrorborder,
-                            onChanged: (val) {
-                              setState(() {});
-                            },
-                          ), 
-
-                          Passwordfield600(
-                            controller: confpasswordController,
-                            hint: "ضع كلمة مرورك",
-                            fieldTitle: ":كلمة المرور",
-                            darkThemFontColor: darkThemFontColor,
-                            widthPage: widthPage,
-                            isTrue: isTrue,
-                            darkThemborder: darkThemborder,
-                            darkThemerrorborder: darkThemerrorborder,
-                            showIcon: true,
-                            onPressed: () {
-                              setState(() {
-                                isTrue = !isTrue;
-                              });
-                            },
-                            onChanged: (val) {
-                              setState(() {});
-                            },
-                          ),
-
-                          Passwordfield600(
-                            controller: passwordController,
-                            hint: "أكد كلمة المرور التي وضعتها",
-                            fieldTitle: ":تأكيد كلمة المرور",
-                            darkThemFontColor: darkThemFontColor,
-                            widthPage: widthPage,
-                            isTrue: isTrue,
-                            darkThemborder: darkThemborder,
-                            darkThemerrorborder: darkThemerrorborder,
-                            showIcon: false,
-                            onPressed: () {
-                              setState(() {
-                                isTrue = !isTrue;
-                              });
-                            },
-                            onChanged: (val) {
-                              setState(() {});
-                            },
-                          ),
-                        ],
+                      alignment: Alignment.topLeft,
+                      margin: EdgeInsets.all(12),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: darkThemFontColor,
+                            width: 1.3
+                          )
+                        ),
+                        child: IconButton(
+                          onPressed: (){
+                            Navigator.pushReplacement(
+                              context, 
+                              MaterialPageRoute(
+                                builder: (context) => logInPage600(),
+                              )
+                            );
+                          }, 
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: darkThemFontColor,
+                          )
+                        ),
                       )
                     ),
 
-                    // dropdownmune
-                    Center(
-                      child: Container(
-                          margin: EdgeInsets.only(top: 12),
-                          child: DropdownMenu<String>(
-                            hintText: "اختر المحافظة",
-                            textAlign: TextAlign.right,
-                            controller: muneController,
-                            leadingIcon: Icon(
-                              Icons.home_sharp,
-                              color: darkThemFontColor,
-                            ),
-                            textStyle: GoogleFonts.rubik(
-                                        color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
-                                        fontWeight: FontWeight.w500
-                                      ),
-                            width: widthPage * .5,
-                            label: Text("اختر المحافظة",
-                            style: GoogleFonts.rubik(
-                                        color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
-                                        fontWeight: FontWeight.w500
-                                      ),
-                            ),
-                            initialSelection: selectedGovernorate,
-                            onSelected: (value) {
-                              setState(() {
-                                selectedGovernorate = value;
-                              });
-                            },
-                            dropdownMenuEntries: iraqGovernorates,
-                          ),
+                    Container(
+                      margin: EdgeInsets.only(top: heightPage * .03),
+                      child: Text(
+                        "انشئ حسابكَ بكل سهولة",
+                        style: GoogleFonts.rubik(
+                          color: darkThemFontColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: widthPage * .04
                         ),
+                      ),
                     ),
 
-                    Container(
-                            margin: EdgeInsets.only(top: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            
 
-                            Condtion600(
-                              darkThemFontColor: darkThemFontColor,
-                              heightPage: heightPage,
-                              widthPage: widthPage,
-                              darkThemFalseFontColor:
-                              darkThemFalseFontColor
+                            Container(
+                              width: widthPage,
+                              margin: EdgeInsets.only(top: 16, right: 12, left: 12),
+                              decoration: BoxDecoration(
+                                color: darkThemSecBacgrounColor,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30),
+                                )
                               ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                      margin: EdgeInsets.only(top: 16),
+                                      child: Text(
+                                        ":اختر مجال عملك",
+                                        style: GoogleFonts.rubik(
+                                          color: darkThemFontColor,
+                                          fontSize: widthPage * .025,
+                                          fontWeight: FontWeight.w500
+                                        ),
+                                      ),
+                                    ),
 
-                            gisterClick600(
-                              darkThemFontColor: darkThemFontColor,
-                              isUnderline: false,
-                              text: " و ",
-                              onTap: (){
+                                  Container(
+                                    margin: EdgeInsets.only(top: 24),
+                                    width: widthPage * .5,
+                                    height: 75,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: darkThemFontColor,
+                                        width: 1.3
+                                      )
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
 
-                              }
-                              ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: isSelected == true 
+                                                  ? darkThemBackground 
+                                                  : darkThemSecBacgrounColor,
+                                              border: Border(
+                                                right: BorderSide(
+                                                  color: darkThemFontColor,
+                                                  width: 1.3
+                                                )
+                                              )
+                                            ),
+                                            child: MaterialButton(
+                                              onPressed: (){
+                                                setState(() {
+                                                  isSelected = true;
+                                                  isSelected2 = false;
+                                                });
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: [
+                                                  Icon(Icons.work,
+                                                      size: 24,
+                                                      color: darkThemFontColor),
+                                                  Text(
+                                                    "صاحب عمل",
+                                                    style: GoogleFonts.rubik(
+                                                      color: darkThemFontColor,
+                                                      fontSize: widthPage * .02,
+                                                      fontWeight: FontWeight.w500
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ),
 
-                            terms600(
-                              darkThemFontColor: darkThemFontColor,
-                              heightPage: heightPage,
-                              widthPage: widthPage,
-                              darkThemFalseFontColor: darkThemFalseFontColor,
-                              ),
-
-                            gisterClick600(
-                              darkThemFontColor: darkThemFontColor,
-                              isUnderline: false,
-                              text: " هل انت توافق على",
-                              onTap: (){
-
-                              }
-                              ),
-
-                            Checkbox(
-                                value: chval,
-                                onChanged: (val){
-                                  setState(() {
-                                    chval = val!;
-                                  });
-                                },
-                                fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
-                                      if (states.contains(WidgetState.disabled)) {
-                                        if(darkThem == true){
-                                          return darkThemFontColor;
-                                        }
-                                      }
-                                      return darkThemBackground;
-                                    }),
-                                    checkColor: darkThemFontColor,
-                                    activeColor: darkThemFontColor,
+                                        Expanded(
+                                          child: Container(
+                                            color: isSelected2 == true 
+                                                ? darkThemBackground 
+                                                : darkThemSecBacgrounColor,
+                                            child: MaterialButton(
+                                              onPressed: (){
+                                                setState(() {
+                                                  isSelected2 = true;
+                                                  isSelected = false;
+                                                });
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: [
+                                                  Icon(Icons.person,
+                                                      size: 24,
+                                                      color: darkThemFontColor),
+                                                  Text(
+                                                    "عامل",
+                                                    style: GoogleFonts.rubik(
+                                                      color: darkThemFontColor,
+                                                      fontSize: widthPage * .02,
+                                                      fontWeight: FontWeight.w500
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                              ],
+
+                                  Form(
+                                    key: singUpState,
+                                    child: Column(
+                                      children: [
+
+                                        usernameField600(
+                                          fieldTitle: "أسم المستخدم",
+                                          darkThemFontColor: darkThemFontColor,
+                                          widthPage: widthPage,
+                                          isTrue: false,
+                                          darkThemborder: darkThemborder,
+                                          darkThemerrorborder: darkThemerrorborder,
+                                          controller: usernameController,
+                                          hint: "أكتب اسمك هنا",
+                                          onChanged: (val) {
+                                            setState(() {});
+                                          },
+                                        ),
+
+                                        Emailfield600(
+                                          controller: emailController,
+                                          hint: "ضع البريد الألكتروني",
+                                          fieldTitle: ":البريد الألكتروني",
+                                          darkThemFontColor: darkThemFontColor,
+                                          widthPage: widthPage,
+                                          isTrue: false,
+                                          darkThemborder: darkThemborder,
+                                          darkThemerrorborder: darkThemerrorborder,
+                                          onChanged: (val) {
+                                            setState(() {});
+                                          },
+                                        ), 
+
+                                        Passwordfield600(
+                                          controller: confpasswordController,
+                                          hint: "ضع كلمة مرورك",
+                                          fieldTitle: ":كلمة المرور",
+                                          darkThemFontColor: darkThemFontColor,
+                                          widthPage: widthPage,
+                                          isTrue: isTrue,
+                                          darkThemborder: darkThemborder,
+                                          darkThemerrorborder: darkThemerrorborder,
+                                          showIcon: true,
+                                          onPressed: () {
+                                            setState(() {
+                                              isTrue = !isTrue;
+                                            });
+                                          },
+                                          onChanged: (val) {
+                                            setState(() {});
+                                          },
+                                        ),
+
+                                        Passwordfield600(
+                                          controller: passwordController,
+                                          hint: "أكد كلمة المرور التي وضعتها",
+                                          fieldTitle: ":تأكيد كلمة المرور",
+                                          darkThemFontColor: darkThemFontColor,
+                                          widthPage: widthPage,
+                                          isTrue: isTrue,
+                                          darkThemborder: darkThemborder,
+                                          darkThemerrorborder: darkThemerrorborder,
+                                          showIcon: false,
+                                          onPressed: () {
+                                            setState(() {
+                                              isTrue = !isTrue;
+                                            });
+                                          },
+                                          onChanged: (val) {
+                                            setState(() {});
+                                          },
+                                        ),
+                                      ],
+                                    )
+                                  ),
+
+                                  // dropdownmune
+                                  Center(
+                                    child: Container(
+                                        margin: EdgeInsets.only(top: 12),
+                                        child: DropdownMenu<String>(
+                                          hintText: "اختر المحافظة",
+                                          textAlign: TextAlign.right,
+                                          menuHeight: heightPage * 0.7,
+                                          controller: muneController,
+                                          leadingIcon: Icon(
+                                            Icons.home_sharp,
+                                            color: darkThemFontColor,
+                                          ),
+                                          textStyle: GoogleFonts.rubik(
+                                                      color: darkThemFontColor,
+                                                      fontSize: widthPage * .02,
+                                                      fontWeight: FontWeight.w500
+                                                    ),
+                                          width: widthPage * .5,
+                                          label: Text("اختر المحافظة",
+                                          style: GoogleFonts.rubik(
+                                                      color: darkThemFontColor,
+                                                      fontSize: widthPage * .02,
+                                                      fontWeight: FontWeight.w500
+                                                    ),
+                                          ),
+                                          initialSelection: selectedGovernorate,
+                                          onSelected: (value) {
+                                            setState(() {
+                                              selectedGovernorate = value;
+                                            });
+                                          },
+                                          dropdownMenuEntries: iraqGovernorates,
+                                        ),
+                                      ),
+                                  ),
+
+                                  Container(
+                                          margin: EdgeInsets.only(top: 8),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              
+
+                                          Condtion600(
+                                            darkThemFontColor: darkThemFontColor,
+                                            heightPage: heightPage,
+                                            widthPage: widthPage,
+                                            darkThemFalseFontColor:
+                                            darkThemFalseFontColor
+                                            ),
+
+                                          gisterClick600(
+                                            darkThemFontColor: darkThemFontColor,
+                                            isUnderline: false,
+                                            text: " و ",
+                                            onTap: (){
+
+                                            }
+                                            ),
+
+                                          terms600(
+                                            darkThemFontColor: darkThemFontColor,
+                                            heightPage: heightPage,
+                                            widthPage: widthPage,
+                                            darkThemFalseFontColor: darkThemFalseFontColor,
+                                            ),
+
+                                          gisterClick600(
+                                            darkThemFontColor: darkThemFontColor,
+                                            isUnderline: false,
+                                            text: " هل انت توافق على",
+                                            onTap: (){
+
+                                            }
+                                            ),
+
+                                          Checkbox(
+                                              value: chval,
+                                              onChanged: (val){
+                                                setState(() {
+                                                  chval = val!;
+                                                });
+                                              },
+                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                                                    if (states.contains(WidgetState.disabled)) {
+                                                      if(darkThem == true){
+                                                        return darkThemFontColor;
+                                                      }
+                                                    }
+                                                    return darkThemBackground;
+                                                  }),
+                                                  checkColor: darkThemFontColor,
+                                                  activeColor: darkThemFontColor,
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+
+                                  Container(
+                                        margin: EdgeInsets.only(top: 12, bottom: 12),
+                                        width: widthPage * 0.5,
+                                        height: 50,
+                                        child: MaterialButton(onPressed: () async {
+                                          bool isClick = false;
+                                        setState(() {
+                                          isClick = true;
+                                        }); 
+                                        if (singUpState.currentState!.validate()) {
+                                              try {
+                                                if (passwordController.text != confpasswordController.text) {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(content: Text("كلمتا المرور غير متطابقتين"),
+                                                    duration: Duration(seconds: 5),
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+
+                                                if (selectedGovernorate == null) {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(content: Text("اختر المحافظة"),
+                                                    duration: Duration(seconds: 5),
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+
+                                                if (!isSelected && !isSelected2) {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(content: Text("اختر نوع الحساب"),
+                                                    duration: Duration(seconds: 5),
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+
+                                                UserCredential userCredential =
+                                                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                                  email: emailController.text.trim(),
+                                                  password: passwordController.text.trim(),
+                                                );
+
+                                                String uid = userCredential.user!.uid;
+
+                                                String accountType = isSelected ? "work" : "worker";
+                                                String bio = "";
+                                                int numberphone = 00000000000;
+                                                int numberphone2 = 00000000000;
+                                                int numberphone3 = 00000000000;
+                                                int numberphone4 = 00000000000;
+                                                List<String> hisCollection = [];
+
+
+                                                await FirebaseFirestore.instance
+                                                    .collection("users")
+                                                    .doc(uid)
+                                                    .set({
+                                                  "uid": uid,
+                                                  "username": usernameController.text.trim(),
+                                                  "email": emailController.text.trim(),
+                                                  "governorate": selectedGovernorate,
+                                                  "accountType": accountType,
+                                                  "createdAt": FieldValue.serverTimestamp(),
+                                                  "freepost": "10",
+                                                  "verifird": "not verifird",
+                                                  "age": 0,
+                                                  "birthday": 16/11/2000,
+                                                  "gender": "null",
+                                                  "bio": bio,
+                                                  "numberphone": numberphone,
+                                                  "numberphone2": numberphone2,
+                                                  "numberphone3": numberphone3,
+                                                  "numberphone4": numberphone4,
+                                                  "hisCollection": hisCollection
+                                                });
+
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text("تم إنشاء الحساب بنجاح,أكد الحساب ثم سجل الدخول"),
+                                                  duration: Duration(seconds: 5),
+                                                  ),
+                                                );
+                                                userCredential.user!.sendEmailVerification();
+
+                                                Navigator.pushReplacement(
+                                                context, 
+                                                MaterialPageRoute(
+                                                  builder: (context) => logInPage600(),
+                                                  )
+                                                );
+
+                                              } on FirebaseAuthException catch (e) {
+
+                                                String message = "";
+
+                                                if (e.code == 'email-already-in-use') {
+                                                  message = "البريد مستخدم مسبقاً";
+                                                } else if (e.code == 'weak-password') {
+                                                  message = "كلمة المرور ضعيفة";
+                                                } else if (e.code == 'invalid-email') {
+                                                  message = "بريد غير صالح";
+                                                } else {
+                                                  message = "حدث خطأ";
+                                                }
+
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(content: Text(message),
+                                                    duration: Duration(seconds: 5),
+                                                    ),
+                                                );
+                                              }
+                                            }
+                                            setState(() {
+                                              isClick = false;
+                                            });
+                                        },
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
+                                          side: BorderSide(
+                                            width: 1.2,
+                                            color: darkThemFontColor
+                                          )
+                                        ),
+                                        color: darkThemBackground,
+                                        disabledColor: darkThemdisablebutton,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.login_rounded,
+                                            color: darkThemFontColor,
+                                            ),
+                                            Text("أنشاء حساب جديد",
+                                            style: GoogleFonts.rubik(
+                                                  color: darkThemFontColor,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: widthPage * .032
+                                                ),
+                                            ),
+                                          ],
+                                        ),
+                                        ),
+                                      ),
+                                ],
+                              ),
                             ),
-                          ),
-
-                    /// زر
-                    Container(
-                          margin: EdgeInsets.only(top: 12, bottom: 12),
-                          width: widthPage * 0.5,
-                          height: 50,
-                          child: MaterialButton(onPressed: () async {
-                            if (singUpState.currentState!.validate()) {
-    try {
-      /// 1. تحقق من كلمة المرور
-      if (passwordController.text != confpasswordController.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("كلمتا المرور غير متطابقتين")),
-        );
-        return;
-      }
-
-      /// 2. تحقق من المحافظة
-      if (selectedGovernorate == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("اختر المحافظة")),
-        );
-        return;
-      }
-
-      /// 3. تحقق من نوع الحساب
-      if (!isSelected && !isSelected2) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("اختر نوع الحساب")),
-        );
-        return;
-      }
-
-      /// 4. إنشاء حساب Firebase Auth
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-
-      String uid = userCredential.user!.uid;
-
-      /// 5. تحديد نوع الحساب
-      String accountType = isSelected ? "work" : "worker";
-
-
-      /// 7. إنشاء الكولكشن وحفظ البيانات
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(uid)
-          .set({
-        "uid": uid,
-        "username": usernameController.text.trim(),
-        "email": emailController.text.trim(),
-        "governorate": selectedGovernorate,
-        "accountType": accountType,
-        "createdAt": FieldValue.serverTimestamp(),
-        "freepost": "10",
-        "verifird": "not verifird"
-      });
-
-      /// 8. نجاح
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("تم إنشاء الحساب بنجاح,أكد الحساب ثم سجل الدخول")),
-      );
-      userCredential.user!.sendEmailVerification();
-
-    } on FirebaseAuthException catch (e) {
-
-      String message = "";
-
-      if (e.code == 'email-already-in-use') {
-        message = "البريد مستخدم مسبقاً";
-      } else if (e.code == 'weak-password') {
-        message = "كلمة المرور ضعيفة";
-      } else if (e.code == 'invalid-email') {
-        message = "بريد غير صالح";
-      } else {
-        message = "حدث خطأ";
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
-      );
-    }
-  }
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
-                            side: BorderSide(
-                              width: 1.2,
-                              color: darkThemFontColor
-                            )
-                          ),
-                          color: darkThemBackground,
-                          disabledColor: darkThemdisablebutton,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(Icons.login_rounded,
-                              color: darkThemFontColor,
-                              ),
-                              Text("أنشاء حساب جديد",
-                              style: GoogleFonts.rubik(
-                                    color: darkThemFontColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: widthPage * .032
-                                  ),
-                              ),
-                            ],
-                          ),
-                          ),
-                         ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    ],
-  ),
-),
             )
         ); 
       }),

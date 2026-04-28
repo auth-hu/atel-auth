@@ -1,15 +1,16 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
 
-import 'package:atel/Screen/360/singUpPage.dart';
+import 'package:atel/Screen/900/singUpPage600.dart';
+import 'package:atel/Screen/900/swichpages.dart';
 import 'package:atel/componnent/360/GisterClick.dart';
 import 'package:atel/componnent/600/GisterClick.dart';
 import 'package:atel/componnent/900/Emailfield.dart';
 import 'package:atel/componnent/900/condtion.dart';
 import 'package:atel/componnent/900/forgotPass.dart';
-import 'package:atel/componnent/900/moreLogin.dart';
 import 'package:atel/componnent/900/passwordfield.dart';
 import 'package:atel/componnent/900/terms.dart';
 import 'package:atel/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,6 +52,43 @@ class _logInPage900 extends State<logInPage900> {
   TextEditingController forgotPasswordController = TextEditingController();
   GlobalKey<FormState> LoginState = GlobalKey();
   bool chval = false;
+
+  
+    Future<void> login() async {
+    
+    if(LoginState.currentState!.validate()){
+      try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => Swichpages900()),
+      );
+    } on FirebaseAuthException catch (e) {
+
+             String message = "";
+
+            if (e.code == 'email-already-in-use') {
+              message = "البريد مستخدم مسبقاً";
+            } else if (e.code == 'weak-password') {
+              message = "كلمة المرور ضعيفة";
+            } else if (e.code == 'invalid-email') {
+              message = "بريد غير صالح";
+            } else {
+              message = "حدث خطأ";
+            }
+
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message),
+              duration: Duration(seconds: 5),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +141,7 @@ class _logInPage900 extends State<logInPage900> {
                           key: LoginState,
                           child: Column(
                             children: [
+                              SizedBox(height: 16,),
                               Emailfield900(
                                 controller: emailController,
                                 hint: "ضع البريد الألكتروني",
@@ -212,8 +251,8 @@ class _logInPage900 extends State<logInPage900> {
                           margin: EdgeInsets.only(top: 12),
                           width: widthPage * 0.25,
                           height: 50,
-                          child: MaterialButton(onPressed: (){
-
+                          child: MaterialButton(onPressed: () async{
+                            login();
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
@@ -243,15 +282,6 @@ class _logInPage900 extends State<logInPage900> {
                           ),
                          ),
 
-                         moreLogin900(
-                          widthPage: widthPage,
-                          darkThemFalseFontColor:
-                          darkThemFalseFontColor,
-                          darkThemFontColor: darkThemFontColor,
-                          darkThemdisablebutton: darkThemdisablebutton,
-                          heightPage: heightPage,
-                          ),
-
                          Center(
                            child: Container(
                             margin: EdgeInsets.only(top: 8),
@@ -267,7 +297,7 @@ class _logInPage900 extends State<logInPage900> {
                                   Navigator.push(
                                     context, 
                                     MaterialPageRoute(
-                                      builder: (context) => singUpPage(),
+                                      builder: (context) => singUpPage900(),
                                       )
                                     );
                                 }

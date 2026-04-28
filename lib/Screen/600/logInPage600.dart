@@ -1,14 +1,15 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
 
 import 'package:atel/Screen/600/singUpPage600.dart';
+import 'package:atel/Screen/600/swichpages.dart';
 import 'package:atel/componnent/600/Emailfield.dart';
 import 'package:atel/componnent/600/GisterClick.dart';
 import 'package:atel/componnent/600/condtion.dart';
 import 'package:atel/componnent/600/forgotPass.dart';
-import 'package:atel/componnent/600/moreLogin.dart';
 import 'package:atel/componnent/600/passwordfield.dart';
 import 'package:atel/componnent/600/terms.dart';
 import 'package:atel/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,6 +51,43 @@ class _logInPage600 extends State<logInPage600> {
   TextEditingController forgotPasswordController = TextEditingController();
   GlobalKey<FormState> LoginState = GlobalKey();
   bool chval = false;
+
+  
+    Future<void> login() async {
+    
+    if(LoginState.currentState!.validate()){
+      try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => Swichpages600()),
+      );
+    } on FirebaseAuthException catch (e) {
+
+             String message = "";
+
+            if (e.code == 'email-already-in-use') {
+              message = "البريد مستخدم مسبقاً";
+            } else if (e.code == 'weak-password') {
+              message = "كلمة المرور ضعيفة";
+            } else if (e.code == 'invalid-email') {
+              message = "بريد غير صالح";
+            } else {
+              message = "حدث خطأ";
+            }
+
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message),
+              duration: Duration(seconds: 5),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,8 +249,8 @@ class _logInPage600 extends State<logInPage600> {
                           margin: EdgeInsets.only(top: 12),
                           width: widthPage * 0.5,
                           height: 50,
-                          child: MaterialButton(onPressed: (){
-
+                          child: MaterialButton(onPressed: () async{
+                            login();
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
@@ -241,15 +279,6 @@ class _logInPage600 extends State<logInPage600> {
                           ),
                           ),
                          ),
-
-                         moreLogin600(
-                          widthPage: widthPage,
-                          darkThemFalseFontColor:
-                          darkThemFalseFontColor,
-                          darkThemFontColor: darkThemFontColor,
-                          darkThemdisablebutton: darkThemdisablebutton,
-                          heightPage: heightPage,
-                          ),
 
                          Center(
                            child: Container(

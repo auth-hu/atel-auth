@@ -1,12 +1,12 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, unused_local_variable, camel_case_types
 
-import 'package:atel/Screen/600/logInPage600.dart';
-import 'package:atel/componnent/600/Emailfield.dart';
-import 'package:atel/componnent/600/GisterClick.dart';
-import 'package:atel/componnent/600/condtion.dart';
-import 'package:atel/componnent/600/passwordfield.dart';
-import 'package:atel/componnent/600/terms.dart';
-import 'package:atel/componnent/600/usernameFeild.dart';
+import 'package:atel/Screen/900/logInPage900.dart';
+import 'package:atel/componnent/900/Emailfield.dart';
+import 'package:atel/componnent/900/GisterClick.dart';
+import 'package:atel/componnent/900/condtion.dart';
+import 'package:atel/componnent/900/passwordfield.dart';
+import 'package:atel/componnent/900/terms.dart';
+import 'package:atel/componnent/900/usernameFeild.dart';
 import 'package:atel/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +19,20 @@ void main() async{
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(const singUpPage600());
+  runApp(const singUpPage900());
 }
 
-class singUpPage600 extends StatefulWidget{
-  const singUpPage600({super.key});
+class singUpPage900 extends StatefulWidget{
+  const singUpPage900({super.key});
 
 
   @override
-  State<singUpPage600> createState() => _singUpPage600();
+  State<singUpPage900> createState() => _singUpPage900();
 }
 
 
 
-class _singUpPage600 extends State<singUpPage600> {
+class _singUpPage900 extends State<singUpPage900> {
 
 
 
@@ -136,7 +136,7 @@ bool canSubmit() {
               Navigator.pushReplacement(
                 context, 
                 MaterialPageRoute(
-                  builder: (context) => logInPage600(),
+                  builder: (context) => logInPage900(),
                 )
               );
             }, 
@@ -155,7 +155,7 @@ bool canSubmit() {
           style: GoogleFonts.rubik(
             color: darkThemFontColor,
             fontWeight: FontWeight.w500,
-            fontSize: widthPage * .04
+            fontSize: widthPage * .03
           ),
         ),
       ),
@@ -177,7 +177,17 @@ bool canSubmit() {
                 ),
                 child: Column(
                   children: [
-
+                    Container(
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                ":اختر مجال عملك",
+                                style: GoogleFonts.rubik(
+                                        color: darkThemFontColor,
+                                        fontSize: widthPage * .015,
+                                        fontWeight: FontWeight.w500
+                                      ),
+                              ),
+                            ),
                     Container(
                       margin: EdgeInsets.only(top: 24),
                       width: widthPage * .5,
@@ -191,7 +201,7 @@ bool canSubmit() {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-
+                          
                           Expanded(
                             child: Container(
                               decoration: BoxDecoration(
@@ -222,7 +232,7 @@ bool canSubmit() {
                                       "صاحب عمل",
                                       style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
+                                        fontSize: widthPage * .013,
                                         fontWeight: FontWeight.w500
                                       ),
                                     )
@@ -254,7 +264,7 @@ bool canSubmit() {
                                       "عامل",
                                       style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
+                                        fontSize: widthPage * .013,
                                         fontWeight: FontWeight.w500
                                       ),
                                     )
@@ -271,8 +281,8 @@ bool canSubmit() {
                       key: singUpState,
                       child: Column(
                         children: [
-
-                          usernameField600(
+                          SizedBox(height: 12,),
+                          usernameField900(
                             fieldTitle: "أسم المستخدم",
                             darkThemFontColor: darkThemFontColor,
                             widthPage: widthPage,
@@ -286,7 +296,7 @@ bool canSubmit() {
                             },
                           ),
 
-                          Emailfield600(
+                          Emailfield900(
                             controller: emailController,
                             hint: "ضع البريد الألكتروني",
                             fieldTitle: ":البريد الألكتروني",
@@ -300,7 +310,7 @@ bool canSubmit() {
                             },
                           ), 
 
-                          Passwordfield600(
+                          Passwordfield900(
                             controller: confpasswordController,
                             hint: "ضع كلمة مرورك",
                             fieldTitle: ":كلمة المرور",
@@ -320,7 +330,7 @@ bool canSubmit() {
                             },
                           ),
 
-                          Passwordfield600(
+                          Passwordfield900(
                             controller: passwordController,
                             hint: "أكد كلمة المرور التي وضعتها",
                             fieldTitle: ":تأكيد كلمة المرور",
@@ -350,6 +360,7 @@ bool canSubmit() {
                           child: DropdownMenu<String>(
                             hintText: "اختر المحافظة",
                             textAlign: TextAlign.right,
+                            menuHeight: heightPage * 0.7,
                             controller: muneController,
                             leadingIcon: Icon(
                               Icons.home_sharp,
@@ -357,14 +368,14 @@ bool canSubmit() {
                             ),
                             textStyle: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
+                                        fontSize: widthPage * .015,
                                         fontWeight: FontWeight.w500
                                       ),
-                            width: widthPage * .5,
+                            width: widthPage * .3,
                             label: Text("اختر المحافظة",
                             style: GoogleFonts.rubik(
                                         color: darkThemFontColor,
-                                        fontSize: widthPage * .02,
+                                        fontSize: widthPage * .015,
                                         fontWeight: FontWeight.w500
                                       ),
                             ),
@@ -386,7 +397,7 @@ bool canSubmit() {
                               children: [
                                 
 
-                            Condtion600(
+                            Condtion900(
                               darkThemFontColor: darkThemFontColor,
                               heightPage: heightPage,
                               widthPage: widthPage,
@@ -394,7 +405,7 @@ bool canSubmit() {
                               darkThemFalseFontColor
                               ),
 
-                            gisterClick600(
+                            gisterClick900(
                               darkThemFontColor: darkThemFontColor,
                               isUnderline: false,
                               text: " و ",
@@ -403,14 +414,14 @@ bool canSubmit() {
                               }
                               ),
 
-                            terms600(
+                            terms900(
                               darkThemFontColor: darkThemFontColor,
                               heightPage: heightPage,
                               widthPage: widthPage,
                               darkThemFalseFontColor: darkThemFalseFontColor,
                               ),
 
-                            gisterClick600(
+                            gisterClick900(
                               darkThemFontColor: darkThemFontColor,
                               isUnderline: false,
                               text: " هل انت توافق على",
@@ -441,91 +452,122 @@ bool canSubmit() {
                             ),
                           ),
 
-                    /// زر
                     Container(
                           margin: EdgeInsets.only(top: 12, bottom: 12),
-                          width: widthPage * 0.5,
+                          width: widthPage * 0.25,
                           height: 50,
                           child: MaterialButton(onPressed: () async {
-                            if (singUpState.currentState!.validate()) {
-    try {
-      /// 1. تحقق من كلمة المرور
-      if (passwordController.text != confpasswordController.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("كلمتا المرور غير متطابقتين")),
-        );
-        return;
-      }
+                           bool isClick = false;
+                           setState(() {
+                             isClick = true;
+                           }); 
+                           if (singUpState.currentState!.validate()) {
+                                try {
+                                  if (passwordController.text != confpasswordController.text) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text("كلمتا المرور غير متطابقتين"),
+                                      duration: Duration(seconds: 5),
+                                      ),
+                                    );
+                                    return;
+                                  }
 
-      /// 2. تحقق من المحافظة
-      if (selectedGovernorate == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("اختر المحافظة")),
-        );
-        return;
-      }
+                                  if (selectedGovernorate == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text("اختر المحافظة"),
+                                      duration: Duration(seconds: 5),
+                                      ),
+                                    );
+                                    return;
+                                  }
 
-      /// 3. تحقق من نوع الحساب
-      if (!isSelected && !isSelected2) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("اختر نوع الحساب")),
-        );
-        return;
-      }
+                                  if (!isSelected && !isSelected2) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text("اختر نوع الحساب"),
+                                      duration: Duration(seconds: 5),
+                                      ),
+                                    );
+                                    return;
+                                  }
 
-      /// 4. إنشاء حساب Firebase Auth
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+                                  UserCredential userCredential =
+                                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  );
 
-      String uid = userCredential.user!.uid;
+                                  String uid = userCredential.user!.uid;
 
-      /// 5. تحديد نوع الحساب
-      String accountType = isSelected ? "work" : "worker";
+                                  String accountType = isSelected ? "work" : "worker";
+                                  String bio = "";
+                                  int numberphone = 00000000000;
+                                  int numberphone2 = 00000000000;
+                                  int numberphone3 = 00000000000;
+                                  int numberphone4 = 00000000000;
+                                  List<String> hisCollection = [];
 
 
-      /// 7. إنشاء الكولكشن وحفظ البيانات
-      await FirebaseFirestore.instance
-          .collection("users")
-          .doc(uid)
-          .set({
-        "uid": uid,
-        "username": usernameController.text.trim(),
-        "email": emailController.text.trim(),
-        "governorate": selectedGovernorate,
-        "accountType": accountType,
-        "createdAt": FieldValue.serverTimestamp(),
-        "freepost": "10",
-        "verifird": "not verifird"
-      });
+                                  await FirebaseFirestore.instance
+                                      .collection("users")
+                                      .doc(uid)
+                                      .set({
+                                    "uid": uid,
+                                    "username": usernameController.text.trim(),
+                                    "email": emailController.text.trim(),
+                                    "governorate": selectedGovernorate,
+                                    "accountType": accountType,
+                                    "createdAt": FieldValue.serverTimestamp(),
+                                    "freepost": "10",
+                                    "verifird": "not verifird",
+                                    "age": 0,
+                                    "birthday": 16/11/2000,
+                                    "gender": "null",
+                                    "bio": bio,
+                                    "numberphone": numberphone,
+                                    "numberphone2": numberphone2,
+                                    "numberphone3": numberphone3,
+                                    "numberphone4": numberphone4,
+                                    "hisCollection": hisCollection
+                                  });
 
-      /// 8. نجاح
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("تم إنشاء الحساب بنجاح,أكد الحساب ثم سجل الدخول")),
-      );
-      userCredential.user!.sendEmailVerification();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text("تم إنشاء الحساب بنجاح,أكد الحساب ثم سجل الدخول"),
+                                    duration: Duration(seconds: 5),
+                                    ),
+                                  );
+                                  userCredential.user!.sendEmailVerification();
 
-    } on FirebaseAuthException catch (e) {
+                                  Navigator.pushReplacement(
+                                    context, 
+                                    MaterialPageRoute(
+                                      builder: (context) => logInPage900(),
+                                      )
+                                    );
 
-      String message = "";
+                                } on FirebaseAuthException catch (e) {
 
-      if (e.code == 'email-already-in-use') {
-        message = "البريد مستخدم مسبقاً";
-      } else if (e.code == 'weak-password') {
-        message = "كلمة المرور ضعيفة";
-      } else if (e.code == 'invalid-email') {
-        message = "بريد غير صالح";
-      } else {
-        message = "حدث خطأ";
-      }
+                                  String message = "";
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
-      );
-    }
-  }
+                                  if (e.code == 'email-already-in-use') {
+                                    message = "البريد مستخدم مسبقاً";
+                                  } else if (e.code == 'weak-password') {
+                                    message = "كلمة المرور ضعيفة";
+                                  } else if (e.code == 'invalid-email') {
+                                    message = "بريد غير صالح";
+                                  } else {
+                                    message = "حدث خطأ";
+                                  }
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(message),
+                                      duration: Duration(seconds: 5),
+                                      ),
+                                  );
+                                }
+                              }
+                              setState(() {
+                                isClick = false;
+                              });
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
@@ -547,7 +589,7 @@ bool canSubmit() {
                               style: GoogleFonts.rubik(
                                     color: darkThemFontColor,
                                     fontWeight: FontWeight.w500,
-                                    fontSize: widthPage * .032
+                                    fontSize: widthPage * .02
                                   ),
                               ),
                             ],

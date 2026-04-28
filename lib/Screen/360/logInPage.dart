@@ -1,14 +1,15 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable, camel_case_types
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, unused_local_variable, camel_case_types
 
 import 'package:atel/Screen/360/singUpPage.dart';
+import 'package:atel/Screen/360/swichpages.dart';
 import 'package:atel/componnent/360/Emailfield.dart';
 import 'package:atel/componnent/360/GisterClick.dart';
 import 'package:atel/componnent/360/condtion.dart';
 import 'package:atel/componnent/360/forgotPass.dart';
-import 'package:atel/componnent/360/moreLogin.dart';
 import 'package:atel/componnent/360/passwordfield.dart';
 import 'package:atel/componnent/360/terms.dart';
 import 'package:atel/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +36,9 @@ class _logInPage extends State<logInPage> {
 
 
 
+
+
+
   bool darkThem = false;
   bool isTrue = true;
   late var darkThemBackground = darkThem == true ? Color(0xff030b26) : Color(0xff89fafa);
@@ -50,6 +54,42 @@ class _logInPage extends State<logInPage> {
   TextEditingController forgotPasswordController = TextEditingController();
   GlobalKey<FormState> LoginState = GlobalKey();
   bool chval = false;
+
+    Future<void> login() async {
+    
+    if(LoginState.currentState!.validate()){
+      try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => Swichpages()),
+      );
+    } on FirebaseAuthException catch (e) {
+
+             String message = "";
+
+            if (e.code == 'email-already-in-use') {
+              message = "البريد مستخدم مسبقاً";
+            } else if (e.code == 'weak-password') {
+              message = "كلمة المرور ضعيفة";
+            } else if (e.code == 'invalid-email') {
+              message = "بريد غير صالح";
+            } else {
+              message = "حدث خطأ";
+            }
+
+            ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message),
+              duration: Duration(seconds: 5),
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,8 +251,8 @@ class _logInPage extends State<logInPage> {
                           margin: EdgeInsets.only(top: 12),
                           width: widthPage * 0.65,
                           height: 50,
-                          child: MaterialButton(onPressed: (){
-
+                          child: MaterialButton(onPressed: () async {
+                            login();
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
@@ -241,15 +281,6 @@ class _logInPage extends State<logInPage> {
                           ),
                           ),
                          ),
-
-                         moreLogin(
-                          widthPage: widthPage,
-                          darkThemFalseFontColor:
-                          darkThemFalseFontColor,
-                          darkThemFontColor: darkThemFontColor,
-                          darkThemdisablebutton: darkThemdisablebutton,
-                          heightPage: heightPage,
-                          ),
 
                          Center(
                            child: Container(

@@ -2,7 +2,9 @@ import 'package:atel/Screen/360/logInPage.dart';
 import 'package:atel/Screen/600/logInPage600.dart';
 import 'package:atel/Screen/900/logInPage900.dart';
 import 'package:atel/firebase_options.dart';
+import 'package:atel/return/homeReturn.dart';
 import 'package:atel/return/loadingPageReturn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(Duration(seconds: 3), () {
       setState(() {
         isLoading = true;
         print("$isLoading");
@@ -50,38 +52,38 @@ class _MyAppState extends State<MyApp> {
       home: LayoutBuilder(builder : (context, constraints){
         double widthPage = constraints.maxWidth;
         double heightPage = constraints.maxHeight;
-        if (widthPage <= 600) {
-          if (isLoading == true) {
-            return logInPage();
+        
+        return StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(), 
+          builder: (context, snapshot) {
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return isLoading ? LoadingPage(
+                darkThem: darkThem,
+                heightPage: heightPage,
+                widthPage: widthPage
+                ) : LoadingPage(
+                darkThem: darkThem,
+                heightPage: heightPage,
+                widthPage: widthPage
+                );
+            }
+            if(!snapshot.hasData){
+              if(widthPage <= 600){
+                return logInPage();
+              }else if(widthPage <= 900){
+                return logInPage600();
+              }else if(widthPage <= 1100){
+                return logInPage900();
+              }else if(widthPage <= 4000){
+                return logInPage900();
+              }
+            }
+
+            return Homereturn();
           }
-          return LoadingPage(
-            darkThem: darkThem,
-            heightPage: heightPage,
-            widthPage: widthPage,
           );
-        }
-        if (widthPage <= 900) {
-          if (isLoading == true) {
-            return logInPage600();
-          }
-          return LoadingPage(
-            darkThem: darkThem,
-            heightPage: heightPage,
-            widthPage: widthPage,
-          );
-        }
-        if (widthPage <= 4080) {
-          if (isLoading == true) {
-            return logInPage900();
-          }
-          return LoadingPage(
-            darkThem: darkThem,
-            heightPage: heightPage,
-            widthPage: widthPage,
-          );
-        }
-        return Container(); // Placeholder for other cases, adjust as needed
-      }),
+      }
+  ),
     );
   }
 }

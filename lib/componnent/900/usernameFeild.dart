@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class usernameField600 extends StatelessWidget {
+class usernameField900 extends StatelessWidget {
 
   final fieldTitle;
   final darkThemFontColor;
@@ -15,7 +15,7 @@ class usernameField600 extends StatelessWidget {
   final bool isTrue;
   final Function(String)? onChanged;
 
-  const usernameField600(
+  const usernameField900(
   {
     super.key,
     required this.fieldTitle,
@@ -35,8 +35,8 @@ class usernameField600 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        right: 24,
-        left: 24,
+        right: 256,
+        left: 256,
         bottom: 10,
         top: 10
       ),
@@ -48,7 +48,7 @@ class usernameField600 extends StatelessWidget {
             child: Text("$fieldTitle",
             style: GoogleFonts.rubik(
               color: darkThemFontColor,
-              fontSize: widthPage * 0.025,
+              fontSize: widthPage * 0.015,
               fontWeight: FontWeight.w500,
             ),
             ),

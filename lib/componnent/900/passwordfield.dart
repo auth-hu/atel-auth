@@ -39,8 +39,8 @@ class Passwordfield900 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        right: 128,
-        left: 128,
+        right: 256,
+        left: 256,
         bottom: 10,
         top: 10
       ),
