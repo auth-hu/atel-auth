@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:atel/Screen/360/pages/homepage.dart';
 import 'package:atel/Screen/360/pages/notifictionpage.dart';
 import 'package:atel/Screen/360/pages/seetingspage.dart';
@@ -46,9 +48,10 @@ class _SwichpagesState extends State<Swichpages> {
   final List<Widget> pages = [
     homepage(),
     notificationpage(),
-    settingspage()
+    settingspage(),
   ];
 
+  
 
 
   @override
@@ -73,7 +76,7 @@ class _SwichpagesState extends State<Swichpages> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: curre,
-          selectedFontSize: 18,
+          selectedFontSize: 14,
           selectedItemColor: darkThemFontColor,
           unselectedItemColor: darkThemunslected,
           backgroundColor: darkThemBackground,
@@ -89,7 +92,7 @@ class _SwichpagesState extends State<Swichpages> {
             controller.animateToPage(
               index,
               duration: Duration(microseconds: 600),
-              curve: Curves.decelerate
+              curve: Curves.easeInOut
               );
           },
           items: const [

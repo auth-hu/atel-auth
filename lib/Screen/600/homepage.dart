@@ -93,6 +93,34 @@ class _homepageState extends State<homepage> {
                     ),
                   ),
                   /* AppBar Section End */
+                  StreamBuilder<QuerySnapshot>(
+  stream: FirebaseFirestore.instance.collection('post').snapshots(),
+  builder: (context, snapshot) {
+     print("STATE: ${snapshot.connectionState}");
+    print("HAS DATA: ${snapshot.hasData}");
+    print("HAS ERROR: ${snapshot.hasError}");
+    print("DATA: ${snapshot.data}");
+    print("ERROR: ${snapshot.error}");
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const Center(child: Text("جاري التحميل"));
+    }
+    if (snapshot.hasError) {
+      return const Center(child: Text("snaps"));
+    }
+    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+      return const Center(child: Text("لا يوجد بيانات حالياً"));
+    }
+
+    final docs = snapshot.data!.docs;
+    final firstDoc = docs.first;
+
+    final name = firstDoc.data() is Map
+        ? (firstDoc.data() as Map<String, dynamic>)['name'] ?? 'غير معروف'
+        : firstDoc.get('name');
+
+    return Center(child: Text(name.toString()));
+  },
+)
                 ],
               );
             }

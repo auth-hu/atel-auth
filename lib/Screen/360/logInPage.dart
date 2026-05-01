@@ -53,47 +53,82 @@ class _logInPage extends State<logInPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController forgotPasswordController = TextEditingController();
   GlobalKey<FormState> LoginState = GlobalKey();
+  final GlobalKey<ScaffoldMessengerState> messengerKey = GlobalKey<ScaffoldMessengerState>();
   bool chval = false;
 
     Future<void> login() async {
-    
-    if(LoginState.currentState!.validate()){
-      try {
+  if (LoginState.currentState!.validate()) {
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) => Center(child: CircularProgressIndicator()),
+      );
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
 
+      Navigator.pop(context); // اغلاق اللودينك
+
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => Swichpages()),
+        MaterialPageRoute(builder: (context) => Swichpages()),
       );
+
     } on FirebaseAuthException catch (e) {
+      Navigator.pop(context); // اغلاق اللودينك
 
-             String message = "";
 
-            if (e.code == 'email-already-in-use') {
-              message = "البريد مستخدم مسبقاً";
-            } else if (e.code == 'weak-password') {
-              message = "كلمة المرور ضعيفة";
-            } else if (e.code == 'invalid-email') {
-              message = "بريد غير صالح";
-            } else {
-              message = "حدث خطأ";
-            }
+      print('CODE: ${e.code}');
+      print('MESSAGE: ${e.message}');
+      String message;
 
-            ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(message),
-              duration: Duration(seconds: 5),
-          ),
-        );
+      switch (e.code) {
+        case 'user-not-found':
+          message = 'هذا الايميل غير مسجل';
+          break;
+        case 'wrong-password':
+          message = 'كلمة المرور غير صحيحة';
+          break;
+        case 'invalid-email':
+          message = 'صيغة الايميل غير صحيحة';
+          break;
+        case 'user-disabled':
+          message = 'هذا الحساب متوقف';
+          break;
+        default:
+          message = 'حدث خطأ غير متوقع';
       }
+
+      print("$e");
+
+      messengerKey.currentState!.showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Colors.red,
+        ),
+      );
+
+    } catch (e) {
+      Navigator.pop(context); // اغلاق اللودينك
+      print('ERROR: $e');
+
+      messengerKey.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('خطأ عام: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: messengerKey,
       debugShowCheckedModeBanner: false,
       home: LayoutBuilder(builder : (context, constraints){
         double widthPage = constraints.maxWidth;

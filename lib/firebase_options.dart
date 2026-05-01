@@ -41,46 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAyiIhCOkOM1fq812YpZQDRBeT35AJDdSU',
-    appId: '1:581066014283:web:f5af7c3a11c4946d0757ce',
-    messagingSenderId: '581066014283',
-    projectId: 'auth-atel',
-    authDomain: 'auth-atel.firebaseapp.com',
-    storageBucket: 'auth-atel.firebasestorage.app',
+    apiKey: 'AIzaSyCXmfC6D1MQl67YuaS-vsPGsugSsgPsu_w',
+    appId: '1:978453510316:web:81c1ab9522cbceeb040709',
+    messagingSenderId: '978453510316',
+    projectId: 'atel-me',
+    authDomain: 'atel-me.firebaseapp.com',
+    storageBucket: 'atel-me.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCK65k3isryAKQFm7BagRRjAQEb_Sqc0fw',
-    appId: '1:581066014283:android:af549dcd8b1e29a40757ce',
-    messagingSenderId: '581066014283',
-    projectId: 'auth-atel',
-    storageBucket: 'auth-atel.firebasestorage.app',
+    apiKey: 'AIzaSyAd9ovq_dGE9yLg8EIbEtf3jtnd62LckWw',
+    appId: '1:978453510316:android:d68d38266db5b800040709',
+    messagingSenderId: '978453510316',
+    projectId: 'atel-me',
+    storageBucket: 'atel-me.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAcxSL0wfe6MZUDsBQhF1s92tv-FDEfM8s',
-    appId: '1:581066014283:ios:91d7a2d4b067b4990757ce',
-    messagingSenderId: '581066014283',
-    projectId: 'auth-atel',
-    storageBucket: 'auth-atel.firebasestorage.app',
+    apiKey: 'AIzaSyBkhX9GGet0BBupAIe-sqKK1U6KAv3MpEM',
+    appId: '1:978453510316:ios:e9154d42cf433275040709',
+    messagingSenderId: '978453510316',
+    projectId: 'atel-me',
+    storageBucket: 'atel-me.firebasestorage.app',
     iosBundleId: 'com.auth.atel',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAcxSL0wfe6MZUDsBQhF1s92tv-FDEfM8s',
-    appId: '1:581066014283:ios:16eb19a3f469f2ef0757ce',
-    messagingSenderId: '581066014283',
-    projectId: 'auth-atel',
-    storageBucket: 'auth-atel.firebasestorage.app',
+    apiKey: 'AIzaSyBkhX9GGet0BBupAIe-sqKK1U6KAv3MpEM',
+    appId: '1:978453510316:ios:d3c5009839104e22040709',
+    messagingSenderId: '978453510316',
+    projectId: 'atel-me',
+    storageBucket: 'atel-me.firebasestorage.app',
     iosBundleId: 'com.example.atel',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAyiIhCOkOM1fq812YpZQDRBeT35AJDdSU',
-    appId: '1:581066014283:web:80edd736600f39380757ce',
-    messagingSenderId: '581066014283',
-    projectId: 'auth-atel',
-    authDomain: 'auth-atel.firebaseapp.com',
-    storageBucket: 'auth-atel.firebasestorage.app',
+    apiKey: 'AIzaSyCXmfC6D1MQl67YuaS-vsPGsugSsgPsu_w',
+    appId: '1:978453510316:web:cf87b0e412c3c340040709',
+    messagingSenderId: '978453510316',
+    projectId: 'atel-me',
+    authDomain: 'atel-me.firebaseapp.com',
+    storageBucket: 'atel-me.firebasestorage.app',
   );
+
 }

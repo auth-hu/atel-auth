@@ -37,8 +37,9 @@ class _MyAppState extends State<MyApp> {
     Future.delayed(Duration(seconds: 3), () {
       setState(() {
         isLoading = true;
-        print("$isLoading");
       });
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    print('$uid');
     }
     );
   }

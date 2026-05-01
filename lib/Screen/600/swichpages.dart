@@ -1,3 +1,4 @@
+import 'package:atel/Screen/360/pages/homepage.dart';
 import 'package:atel/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _SwichpagesState600 extends State<Swichpages600> {
   int curre = 0;
   final PageController controller = PageController();
   final List<Widget> pages = [
-    Center(child: Text("data"),),
+    homepage(),
     Center(child: Text("data"),),
     Center(child: Text("data"),)
   ];
