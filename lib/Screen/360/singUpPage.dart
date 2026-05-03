@@ -482,9 +482,6 @@ class _singUpPage extends State<singUpPage> {
                                   String accountType = isSelected ? "work" : "worker";
                                   String bio = "";
                                   int numberphone = 00000000000;
-                                  int numberphone2 = 00000000000;
-                                  int numberphone3 = 00000000000;
-                                  int numberphone4 = 00000000000;
                                   List<String> hisCollection = [];
 
 
@@ -505,9 +502,6 @@ class _singUpPage extends State<singUpPage> {
                                     "gender": "null",
                                     "bio": bio,
                                     "numberphone": numberphone,
-                                    "numberphone2": numberphone2,
-                                    "numberphone3": numberphone3,
-                                    "numberphone4": numberphone4,
                                     "hisCollection": hisCollection
                                   });
 

@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names, camel_case_types
 
+import 'package:atel/Screen/360/pages/editProfile.dart';
 import 'package:atel/Screen/360/pages/profilepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -167,10 +168,9 @@ class _settingspage extends State<settingspage> {
                                   enabled: true,
                                   isThreeLine: false,
                                   onTap: (){
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text("what?"),
-                                        duration: Duration(seconds: 5),
-                                      ),
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => editProfile()),
                                     );
                                   },
                                 ),
